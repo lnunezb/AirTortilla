@@ -1,0 +1,14 @@
+# Archivos de datos que no se deben subir
+*.csv
+*.txt
+
+# Archivos de configuración de IntelliJ / IDEs
+.idea/
+*.iml
+out/
+bin/
+target/
+.vscode/
+
+# Compilados de Java
+*.class
