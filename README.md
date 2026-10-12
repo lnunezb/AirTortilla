@@ -21,37 +21,7 @@ El proyecto sigue el patrón de diseño **MVC**:
 
 ## Diagrama de Flujo del Proceso
 
-```mermaid
-flowchart TD
-    subgraph Entrada
-        CSV["📄 Fichero CSV Entrada\n(reservas.csv)"]
-    end
-
-    subgraph Vista_Terminal ["Terminal / Menú (Switch - Case)"]
-        Menu["🕹️ Menú Principal\n1. Procesar en modo total\n2. Procesar línea a línea\n3. Salir"]
-    end
-
-    subgraph Controlador ["Proceso / Controlador"]
-        Parser["Lector de Ficheros\n(BufferedReader)"]
-        Filtro["Filtro y Agrupación\npor País de Destino (ISO)"]
-    end
-
-    subgraph Modelo ["Modelo"]
-        Entidad["Clase Reserva\n- Localizador / Nº Reserva\n- Origen\n- Destino\n- Pasajero\n- Fecha"]
-    end
-
-    subgraph Salida ["Ficheros de Salida (0...N)"]
-        F1["📄 AirTortilla_ES_2026_10_10.csv"]
-        F2["📄 AirTortilla_FR_2026_10_10.csv"]
-        Fn["📄 AirTortilla_XX_YYYY_MM_DD.csv"]
-    end
-
-    CSV --> Parser
-    Menu -->|Selección opción| Parser
-    Parser --> Entidad
-    Entidad --> Filtro
-    Filtro --> Salida
-Proyecto de gestión y particionado de reservas de vuelos por país de destino para AirTortilla.
+![Diagrama de Flujo](diagrama.jpg)
 
 ## Estructura del Fichero CSV de Entrada
 El sistema procesa archivos `.csv` con la siguiente estructura de columnas:
