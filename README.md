@@ -24,7 +24,7 @@ El proyecto sigue el patrón de diseño **MVC**:
 ```mermaid
 flowchart TD
     subgraph Entrada
-        CSV["📄 Fichero CSV Entrada\n(reservas.csv)"]
+        CSV["📄 Fichero CSV Entrada<br/>(reservas.csv)"]
     end
 
     subgraph Vista_Terminal ["Terminal / Menú (Switch - Case)"]
