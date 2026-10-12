@@ -5,17 +5,17 @@ Módulo de procesamiento de ficheros desarrollado en Java para la aerolínea **A
 
 ---
 
-##  Arquitectura del Sistema (Modelo - Vista - Controlador)
+## Arquitectura del Sistema (Modelo - Vista - Controlador)
 
 El proyecto sigue el patrón de diseño **MVC**:
 
-* **Modelo (`Model`)**:
-    * `Persona`: Representa los datos del pasajero (Documento, Nombre, Edad).
-    * `Reserva`: Modela la entidad de la reserva con identificador unívoco / localizador, origen, país de destino (ISO-2), número de vuelo y fecha de realización.
-* **Vista (`View`)**:
-    * Menú interactivo por **Terminal / Consola** implementado con estructuras `switch-case`, permitiendo interactuar con el sistema tanto en modalidad total como en modalidad línea a línea.
-* **Controlador (`Controller`)**:
-    * Lógica de lectura de flujos de datos (`BufferedReader`), validación, resolución de colisiones con localizadores y exportación a los ficheros correspondientes por país de destino.
+- **Modelo (`Model`)**:
+  * `Persona`: Representa los datos del pasajero (Documento, Nombre, Edad).
+  * `Reserva`: Modela la entidad de la reserva con identificador unívoco / localizador, origen, país de destino (ISO-2), número de vuelo y fecha de realización.
+- **Vista (`View`)**:
+  * Menú interactivo por **Terminal / Consola** implementado con estructuras `switch-case`, permitiendo interactuar con el sistema tanto en modalidad total como en modalidad línea a línea.
+- **Controlador (`Controller`)**:
+  * Lógica de lectura de flujos de datos (`BufferedReader`), validación, resolución de colisiones con localizadores y exportación a los ficheros correspondientes por país de destino.
 
 ---
 
@@ -28,16 +28,16 @@ flowchart TD
     end
 
     subgraph Vista_Terminal ["Terminal / Menú (Switch - Case)"]
-        Menu["🕹️ Menú Principal\n1. Procesar en modo total\n2. Procesar línea a línea\n3. Salir"]
+        Menu["🕹️ Menú Principal<br/>1. Procesar en modo total<br/>2. Procesar línea a línea<br/>3. Salir"]
     end
 
     subgraph Controlador ["Proceso / Controlador"]
-        Parser["Lector de Ficheros\n(BufferedReader)"]
-        Filtro["Filtro y Agrupación\npor País de Destino (ISO)"]
+        Parser["Lector de Ficheros<br/>(BufferedReader)"]
+        Filtro["Filtro y Agrupación<br/>por País de Destino (ISO)"]
     end
 
     subgraph Modelo ["Modelo"]
-        Entidad["Clase Reserva\n- Localizador / Nº Reserva\n- Origen\n- Destino\n- Pasajero\n- Fecha"]
+        Entidad["Clase Reserva<br/>- Localizador / Nº Reserva<br/>- Origen<br/>- Destino<br/>- Pasajero<br/>- Fecha"]
     end
 
     subgraph Salida ["Ficheros de Salida (0...N)"]
@@ -50,7 +50,11 @@ flowchart TD
     Menu -->|Selección opción| Parser
     Parser --> Entidad
     Entidad --> Filtro
-    Filtro --> Salida
+    Filtro --> F1
+    Filtro --> F2
+    Filtro --> Fn
+```
+
 Proyecto de gestión y particionado de reservas de vuelos por país de destino para AirTortilla.
 
 ## Estructura del Fichero CSV de Entrada
