@@ -21,7 +21,7 @@ El proyecto sigue el patrón de diseño **MVC**:
 
 ## Diagrama de Flujo del Proceso
 
-![Diagrama de Flujo](diagrama.jpg)
+![Diagrama de Flujo](Diagrama.jpg)
 
 ## Estructura del Fichero CSV de Entrada
 El sistema procesa archivos `.csv` con la siguiente estructura de columnas:
