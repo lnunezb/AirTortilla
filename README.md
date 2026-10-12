@@ -5,17 +5,17 @@ Módulo de procesamiento de ficheros desarrollado en Java para la aerolínea **A
 
 ---
 
-##  Arquitectura del Sistema (Modelo - Vista - Controlador)
+## Arquitectura del Sistema (Modelo - Vista - Controlador)
 
 El proyecto sigue el patrón de diseño **MVC**:
 
-* **Modelo (`Model`)**:
-    * `Persona`: Representa los datos del pasajero (Documento, Nombre, Edad).
-    * `Reserva`: Modela la entidad de la reserva con identificador unívoco / localizador, origen, país de destino (ISO-2), número de vuelo y fecha de realización.
-* **Vista (`View`)**:
-    * Menú interactivo por **Terminal / Consola** implementado con estructuras `switch-case`, permitiendo interactuar con el sistema tanto en modalidad total como en modalidad línea a línea.
-* **Controlador (`Controller`)**:
-    * Lógica de lectura de flujos de datos (`BufferedReader`), validación, resolución de colisiones con localizadores y exportación a los ficheros correspondientes por país de destino.
+- **Modelo (`Model`)**:
+  * `Persona`: Representa los datos del pasajero (Documento, Nombre, Edad).
+  * `Reserva`: Modela la entidad de la reserva con identificador unívoco / localizador, origen, país de destino (ISO-2), número de vuelo y fecha de realización.
+- **Vista (`View`)**:
+  * Menú interactivo por **Terminal / Consola** implementado con estructuras `switch-case`, permitiendo interactuar con el sistema tanto en modalidad total como en modalidad línea a línea.
+- **Controlador (`Controller`)**:
+  * Lógica de lectura de flujos de datos (`BufferedReader`), validación, resolución de colisiones con localizadores y exportación a los ficheros correspondientes por país de destino.
 
 ---
 
