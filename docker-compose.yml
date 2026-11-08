@@ -1,0 +1,11 @@
+services:
+  airtortilla:
+    build: .
+    container_name: airtortilla-app
+    ports:
+      - "8080:8080"
+    volumes:
+      # Persistencia de la base de datos SQLite fuera del contenedor
+      - ./airtortilla.db:/app/airtortilla.db
+    restart: unless-stopped
+

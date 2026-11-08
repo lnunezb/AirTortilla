@@ -1,6 +1,7 @@
 # Archivos de datos que no se deben subir
 *.csv
 *.txt
+*.db
 
 # Archivos de configuración de IntelliJ / IDEs
 .idea/
