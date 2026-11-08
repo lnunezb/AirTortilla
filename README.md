@@ -34,3 +34,16 @@ El sistema procesa archivos `.csv` con la siguiente estructura de columnas:
 | 4 | `Nombre` | Texto | Nombre y apellidos del pasajero | `Carlos Ruiz` |
 
 > **Nota:** Los ficheros de datos (`*.csv`) se encuentran excluidos del repositorio mediante `.gitignore` conforme a las especificaciones de entrega.
+
+---
+
+## Cambios — Entrega 2
+
+Como parte de la preparación para la segunda entrega, se refactorizó `ArchivoReservas.java` para hacer el código más sencillo y legible, sin añadir ni eliminar funcionalidades:
+
+- Se eliminaron todos los `String.format(...)` y códigos de formato (`%s`, `%04d`...) sustituyéndolos por concatenación simple con `+`.
+- Se reemplazaron métodos avanzados como `merge()` y `computeIfAbsent()` por operaciones explícitas (`getOrDefault + put`, `if + put + get`) más fáciles de entender.
+- La iteración sobre mapas pasó de `Map.Entry` con `entrySet()` a `for (clave : mapa.keySet())`.
+- Se extrajo el método auxiliar `lineaCSV(...)` para construir líneas CSV sin repetir lógica.
+- Se añadió el import de `StandardOpenOption` arriba del todo, eliminando rutas completas dentro del código.
+- Se renombraron variables para que describan mejor su propósito (ej. `escribirCabecera` → `esNuevoFichero`).
