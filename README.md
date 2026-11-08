@@ -110,3 +110,45 @@ Se crearon las clases necesarias con Java estándar y JDBC directo para dar sopo
 - **`SeguridadUtil.java`**: Utilidad nativa de hashing mediante algoritmo **SHA-256** para el almacenamiento y verificación segura de credenciales de usuario.
 - **`MigracionDatos.java`**: Lee los ficheros históricos `AirTortilla_*.csv` generados en la Entrega 1 e inserta todas las reservas en la tabla `reservas` mediante `PreparedStatement` evitando duplicados.
 - **`UsuarioDAO.java`**: Capa de acceso a datos para autenticación de credenciales, registro de sesiones de usuario (`sesiones`) y creación de nuevos usuarios por parte del Administrador.
+
+---
+
+### Paso 3: Módulo de Trazabilidad y Auditoría
+Para cumplir con el requerimiento de control de cambios y auditoría de la aerolínea:
+
+- **`AuditoriaDAO.java`**: Registra de forma automática cada evento significativo en la base de datos relacional (`usuario_id`, `accion`, `recurso`, `fecha_hora`), tales como inicios de sesión (`LOGIN`), generación de ficheros y altas de nuevos usuarios. Permite al Administrador consultar el histórico completo ordenado cronológicamente.
+
+---
+
+### Paso 4: Interfaz Web Nativa (Sin Frameworks Externos)
+Se migró la interacción con el usuario de consola/terminal a un entorno web accesible mediante navegador:
+
+- **`ServidorWeb.java`**: Implementa un servidor HTTP nativo de Java (`com.sun.net.httpserver.HttpServer`) en el puerto `8080` con interfaz moderna diseñada con Bootstrap 5:
+  - **Login (`/login`)**: Control de acceso para empleados y administradores con validación segura.
+  - **Dashboard (`/dashboard`)**: Panel principal con estadísticas de reservas en base de datos y botones de acción para generar los ficheros particionados (modalidad total y línea a línea).
+  - **Gestión de Usuarios (`/admin`)**: Panel exclusivo para administradores que permite dar de alta nuevos usuarios especificando su rol (`EMPLEADO` o `ADMINISTRADOR`).
+  - **Panel de Auditoría (`/auditoria`)**: Vista de trazabilidad con tabla detallada de todas las acciones del sistema.
+  - **Cierre de Sesión (`/logout`)**: Registro de fin de sesión y retorno a la pantalla de acceso.
+
+- **`Main.java`**: Orquesta el arranque completo de la aplicación (inicialización de tablas, migración de datos y puesta en marcha del servidor web).
+
+---
+
+### Paso 5: Contenerización con Docker y Docker Compose (Opcional / Deseable)
+Para garantizar la portabilidad y facilitar el empaquetado del sistema conforme al apartado 3.2 de la entrega:
+
+- **`Dockerfile`**: Construye una imagen ligera basada en Eclipse Temurin (Java 21), descarga el driver JDBC de SQLite, compila el código fuente y expone el puerto `8080`.
+- **`docker-compose.yml`**: Orquesta el despliegue del contenedor `airtortilla-app` montando un volumen persistente para la base de datos `airtortilla.db`.
+
+```bash
+# Levantar la aplicación con Docker Compose
+docker compose up --build
+```
+
+---
+
+## Credenciales de Acceso por Defecto
+Al iniciar por primera vez, el sistema precarga el usuario administrador:
+- **Usuario:** `admin`
+- **Contraseña:** `admin123` (almacenada como hash SHA-256 en la base de datos)
+- **URL de acceso:** `http://localhost:8080/login`
