@@ -162,7 +162,16 @@ Conforme al objetivo general de la entrega, se desglosaron los requerimientos en
 ---
 
 ## Credenciales de Acceso por Defecto
-Al iniciar por primera vez, el sistema precarga el usuario administrador:
-- **Usuario:** `admin`
-- **Contraseña:** `admin123` (almacenada como hash SHA-256 en la base de datos)
+Al iniciar por primera vez, el sistema precarga las siguientes cuentas para pruebas:
+
+1. **Perfil Administrador:**
+   - **Usuario:** `admin`
+   - **Contraseña:** `admin123`
+   - **Permisos:** Acceso completo al panel principal, generación de ficheros, gestión/alta de usuarios y visor de auditoría.
+
+2. **Perfil Empleado / Usuario estándar:**
+   - **Usuario:** `Usuario1`
+   - **Contraseña:** `contraseñausuario1`
+   - **Permisos:** Acceso al panel principal y operaciones de generación de ficheros.
+
 - **URL de acceso:** `http://localhost:8080/login`
