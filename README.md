@@ -147,6 +147,20 @@ docker compose up --build
 
 ---
 
+## Matriz de Trazabilidad: Historias de Usuario a Tareas Medibles
+
+Conforme al objetivo general de la entrega, se desglosaron los requerimientos encomendados en tareas técnicas concretas y medibles:
+
+| Historia de Usuario (Rol) | Tareas Técnicas Medibles | Implementación en Código | Estado |
+|:---|:---|:---|:---:|
+| **Empleado:** Poder hacer log in | • Esquema de tablas `usuarios` y `sesiones`<br>• Hashing seguro de credenciales (SHA-256)<br>• Pantalla web de login y autenticación | `schema.sql`<br>`SeguridadUtil.java`<br>`UsuarioDAO.java`<br>`ServidorWeb.java` | ✅ Completado |
+| **Administrador:** Dar de alta nuevos usuarios | • Formulario web exclusivo para administrador<br>• Asignación de rol (`EMPLEADO` / `ADMINISTRADOR`)<br>• Inserción en base de datos con contraseña hasheada | `UsuarioDAO.java`<br>`ServidorWeb.java` | ✅ Completado |
+| **Administrador:** Mantener la trazabilidad (auditoría / logs) | • Captura de eventos relevantes (`LOGIN`, `GENERAR_FICHEROS`, `CREAR_USUARIO`)<br>• Persistencia en tabla `auditoria`<br>• Vista web del histórico de auditoría | `schema.sql`<br>`AuditoriaDAO.java`<br>`ServidorWeb.java` | ✅ Completado |
+| **Normativa Legal:** Migración a Base de Datos Relacional | • Diseño de diagrama ER con integridad referencial<br>• Scripts de creación (`schema.sql`) y datos iniciales (`data.sql`)<br>• Migración automática de datos desde archivos CSV a SQLite | `schema.sql`<br>`data.sql`<br>`ConexionBD.java`<br>`MigracionDatos.java` | ✅ Completado |
+| **DevOps:** Contenerización (Opcional / Deseable) | • Empaquetado de la aplicación en contenedor Docker<br>• Orquestación con volumen persistente | `Dockerfile`<br>`docker-compose.yml` | ✅ Completado |
+
+---
+
 ## Credenciales de Acceso por Defecto
 Al iniciar por primera vez, el sistema precarga el usuario administrador:
 - **Usuario:** `admin`
