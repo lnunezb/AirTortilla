@@ -105,7 +105,7 @@ public class ArchivoReservas {
     // fichero por país.
     // Detecta duplicados (mismo nombre + origen + destino) y añade un sufijo -LOC
     // al localizador.
-    private static void generarModalidadTotal() {
+    public static void generarModalidadTotal() {
         if (!Files.exists(RUTA_CSV_ORIGEN)) {
             System.err.println("No se encontró el fichero: " + RUTA_CSV_ORIGEN.toAbsolutePath());
             return;
@@ -181,7 +181,7 @@ public class ArchivoReservas {
 
     // Lee el CSV registro a registro y vuelca cada línea directamente al fichero
     // correspondiente sin acumular todo en memoria.
-    private static void generarModalidadLineaALinea() {
+    public static void generarModalidadLineaALinea() {
         if (!Files.exists(RUTA_CSV_ORIGEN)) {
             System.err.println("No se encontró el fichero: " + RUTA_CSV_ORIGEN.toAbsolutePath());
             return;

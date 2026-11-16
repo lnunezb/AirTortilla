@@ -9,7 +9,8 @@
 out/
 bin/
 target/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 
 # Compilados de Java
 *.class

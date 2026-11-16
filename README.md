@@ -161,6 +161,35 @@ Conforme al objetivo general de la entrega, se desglosaron los requerimientos en
 
 ---
 
+## Guía Rápida de Ejecución para Evaluación / Corrección
+
+Para corregir y ejecutar el proyecto sin complicaciones, sigue cualquiera de estas opciones:
+
+### Opción 1: Desde VS Code (Recomendado)
+1. Abrir la carpeta raíz del proyecto en VS Code.
+2. Abrir el archivo [`src/Main.java`](src/Main.java) y pulsar **Run ▶️** (o `F5`).  
+   *(La carpeta `.vscode/settings.json` ya incluye automáticamente la librería `lib/sqlite-jdbc.jar` al classpath).*
+3. Acceder en el navegador a: `http://localhost:8080`
+
+### Opción 2: Desde IntelliJ IDEA
+1. Abrir la carpeta del proyecto en IntelliJ IDEA.
+2. Si es la primera vez que abres el proyecto, haz clic derecho sobre el archivo `lib/sqlite-jdbc.jar` en el árbol de archivos y selecciona **"Add as Library..."** ➔ **OK**.
+3. Abrir [`src/Main.java`](src/Main.java) y pulsar **Run ▶️**.
+4. Acceder en el navegador a: `http://localhost:8080`
+
+### Opción 3: Con Docker / Docker Compose
+Si tienes Docker instalado en tu máquina, puedes levantar todo el entorno con un solo comando:
+```bash
+docker compose up --build
+```
+Y acceder directamente a `http://localhost:8080`.
+
+> [!NOTE]
+> **Sobre los datos CSV de prueba:**  
+> Por normativa de la práctica, los archivos `.csv` están ignorados en el repositorio (`.gitignore`). Si se desean generar los ficheros particionados desde el botón del panel web, basta con colocar el archivo `MOCK_DATA (1).csv` en la raíz del proyecto. Si no está presente, la base de datos y la navegación funcionarán igualmente con los datos precargados.
+
+---
+
 ## Credenciales de Acceso por Defecto
 Al iniciar por primera vez, el sistema precarga las siguientes cuentas para pruebas:
 
